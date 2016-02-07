@@ -25,6 +25,7 @@
 
     <declare-styleable name="SeekArc">
         <attr name="SeekArc_thumb" format="reference" />
+        <attr name="SeekArc_thumbColor" format="color" />
         <attr name="SeekArc_thumbOffset" format="dimension" />
         <attr name="SeekArc_max" format="integer" />
         <attr name="SeekArc_progressWidth" format="dimension" />

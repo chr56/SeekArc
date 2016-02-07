@@ -28,6 +28,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -182,8 +183,9 @@ public class SeekArc extends View {
         // Defaults, may need to link this into theme settings
         int arcColor = 0x1F000000;
         int progressColor = Color.BLACK;
+        int thumbColor = Color.BLACK;
 
-        mThumb = ContextCompat.getDrawable(context, R.drawable.abc_seekbar_thumb_material);
+        mThumb = ContextCompat.getDrawable(context, R.drawable.abc_seekbar_thumb_material).mutate();
         // Convert progress width to pixels for current density
         mProgressWidth = (int) (mProgressWidth * density);
 
@@ -218,6 +220,7 @@ public class SeekArc extends View {
             arcColor = a.getColor(R.styleable.SeekArc_SeekArc_arcColor, arcColor);
             progressColor = a.getColor(R.styleable.SeekArc_SeekArc_progressColor,
                     progressColor);
+            thumbColor = a.getColor(R.styleable.SeekArc_SeekArc_thumbColor, progressColor);
 
             a.recycle();
         }
@@ -252,6 +255,7 @@ public class SeekArc extends View {
         }
 
         initThumb();
+        mThumb.setColorFilter(thumbColor, PorterDuff.Mode.SRC_IN);
     }
 
     private void initThumb() {
@@ -565,6 +569,10 @@ public class SeekArc extends View {
         initThumb();
         setTouchInSide(mTouchInside);
         drawableStateChanged();
+    }
+
+    public void setThumbColor(int color) {
+        mThumb.setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
     public Drawable getThumb() {

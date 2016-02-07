@@ -24,12 +24,13 @@
 package com.triggertrap.seekarc;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -176,14 +177,13 @@ public class SeekArc extends View {
     private void init(Context context, AttributeSet attrs, int defStyle) {
 
         Log.d(TAG, "Initialising SeekArc");
-        final Resources res = getResources();
         float density = context.getResources().getDisplayMetrics().density;
 
         // Defaults, may need to link this into theme settings
-        int arcColor = res.getColor(R.color.progress_gray);
-        int progressColor = res.getColor(R.color.default_blue_light);
+        int arcColor = 0x1F000000;
+        int progressColor = Color.BLACK;
 
-        mThumb = res.getDrawable(R.drawable.seek_arc_control_selector);
+        mThumb = ContextCompat.getDrawable(context, R.drawable.abc_seekbar_thumb_material);
         // Convert progress width to pixels for current density
         mProgressWidth = (int) (mProgressWidth * density);
 

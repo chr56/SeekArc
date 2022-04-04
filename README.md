@@ -1,6 +1,11 @@
 SeekArc
 =======
 
+# What is this?
+
+This is a fork of kabouzeid/SeekArc from neild001/SeekArc, used for [Phonograph Plus](https://github.com/chr56/Phonograph_Plus)
+
+
 # What is a SeekArc?
 
 So what the heck is a SeekArc? Essentially it’s a SeekBar that has been wrapped around a circle. It acts like a SeekBar and generally has the same settings. You can even add a Listener to it as you would with a SeekBar. So if its in a circle why not call it a SeekCircle? The answer is that the SeekArc does have a few more setting than the SeekBar one of these is the sweepAngle, which means that the SeekArc doesn’t have to be drawn as a full circle, and can be drawn as a circle, semi-circle  or quarter arc or whatever you like. Supports min SDK 8. 

@@ -46,6 +46,7 @@ import androidx.core.content.ContextCompat;
  *
  * @author Neil Davies
  */
+@SuppressWarnings("unused")
 public class SeekArc extends View {
 
     private static final String TAG = SeekArc.class.getSimpleName();

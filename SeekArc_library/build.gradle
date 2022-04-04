@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+String mVersion = '1.2'
 
 android {
     compileSdkVersion 31
@@ -8,7 +11,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 31
         versionCode 3
-        versionName "1.1"
+        versionName mVersion
     }
     buildFeatures {
         buildConfig = false
@@ -36,6 +39,20 @@ android {
         sourceCompatibility = 1.8
     }
 
+    afterEvaluate {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    from components.release
+
+                    // You can then customize attributes of the publication as shown below.
+                    groupId = 'com.github.chr56'
+                    artifactId = 'SeekArc'
+                    version = mVersion
+                }
+            }
+        }
+    }
 
 
 //    lintOptions {

@@ -36,6 +36,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * SeekArc.java
  * <p/>

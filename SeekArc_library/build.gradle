@@ -20,6 +20,16 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            java {
+                srcDirs += 'src/main'
+            }
+            res {
+                srcDirs += 'res'
+            }
+        }
+    }
 
     compileOptions {
         targetCompatibility = 1.8

@@ -25,12 +25,8 @@ android {
 
     sourceSets {
         main {
-            java {
-                srcDirs += 'src/main'
-            }
-            res {
-                srcDirs += 'res'
-            }
+            java.srcDirs = ['src/main']
+            res.srcDirs = ['res']
         }
     }
 
@@ -40,18 +36,7 @@ android {
     }
 
     afterEvaluate {
-        publishing {
-            publications {
-                release(MavenPublication) {
-                    from components.release
 
-                    // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.github.chr56'
-                    artifactId = 'SeekArc'
-                    version = mVersion
-                }
-            }
-        }
     }
 
 
@@ -64,4 +49,24 @@ android {
 dependencies {
     api 'androidx.appcompat:appcompat:1.4.1'
     api "androidx.core:core:1.6.0"
+}
+
+tasks.create(name: "sourceJar", type: Jar) {
+    from(android.sourceSets.main.java.srcDirs).setArchiveClassifier("sources")
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                artifact(tasks.getByName("bundleReleaseAar"))
+                artifact(tasks.getByName("sourceJar"))
+            }
+
+            // You can then customize attributes of the publication as shown below.
+            groupId = 'com.github.chr56'
+            artifactId = 'SeekArc'
+            version = mVersion
+        }
+    }
 }
